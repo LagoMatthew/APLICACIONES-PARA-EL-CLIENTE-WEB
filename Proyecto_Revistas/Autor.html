@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Autor - ULEAM Journals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="brand-logo" id="toggle-sidebar-logo" title="Colapsar menú">
+            <div class="logo-icon"><span class="material-symbols-outlined">menu_book</span></div>
+            <div class="brand-text"><strong>ULEAM</strong><br><span>Journals</span></div>
+        </div>
+        <nav class="menu-list">
+            <a href="#" class="menu-item active" data-target="nueva-presentacion">
+                <span class="material-symbols-outlined">send</span>
+                <span class="menu-text">Nueva Presentación</span>
+            </a>
+            <a href="#" class="menu-item" data-target="configuracion">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="menu-text">Configuración</span>
+            </a>
+        </nav>
+        <div style="position:absolute;bottom:60px;left:10px;right:10px;">
+            <button id="btn-cerrar-sesion" class="menu-item" style="width:100%;border:none;cursor:pointer;background:transparent;color:#dc143c;">
+                <span class="material-symbols-outlined">logout</span>
+                <span class="menu-text">Cerrar Sesión</span>
+            </button>
+        </div>
+        <div class="version-tag"><span class="menu-text">Módulo Autor</span></div>
+    </aside>
+
+    <main class="main-wrapper">
+        <header class="top-bar">
+            <div class="topbar-left">
+                <h2 style="color:#0d7377;font-weight:600;">Portal del Investigador</h2>
+            </div>
+            <div class="user-profile">
+                <div class="profile-info">
+                    <div class="profile-text">
+                        <strong id="ui-nombre-usuario">Cargando...</strong>
+                        <span id="ui-rol-usuario">Autor</span>
+                    </div>
+                    <div class="avatar"><span class="material-symbols-outlined">person</span></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-area">
+
+            <!-- ===== NUEVA PRESENTACIÓN ===== -->
+            <section id="nueva-presentacion" class="view-section active">
+                <div class="max-w-5xl mx-auto">
+                    <div class="page-header">
+                        <h1>Nueva Presentación: Artículo Científico</h1>
+                        <p>Complete todos los campos requeridos para presentar su manuscrito</p>
+                    </div>
+
+                    <form id="form-nuevo-articulo" class="space-y-6">
+
+                        <!-- SECCIÓN 1: Metadatos -->
+                        <div class="card p-30">
+                            <h3 class="font-semibold text-lg mb-6 pb-3" style="border-bottom:1px solid var(--border);">Sección 1: Metadatos del Manuscrito</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block mb-2 font-medium">Título del Artículo <span class="text-red-600">*</span></label>
+                                    <input id="titulo_articulo" type="text" class="form-control" style="background:#f8f9fa;" placeholder="Ingrese el título completo del artículo">
+                                </div>
+                                <div>
+                                    <label class="block mb-2 font-medium">Resumen (Abstract) <span class="text-red-600">*</span></label>
+                                    <textarea id="abstract_articulo" rows="6" class="form-control" style="background:#f8f9fa;resize:none;" placeholder="Escriba el resumen de su investigación (mínimo 50 caracteres)..."></textarea>
+                                </div>
+                                <div>
+                                    <label class="block mb-2 font-medium">Palabras Clave <span class="text-red-600">*</span></label>
+                                    <div id="contenedor_palabras" class="flex flex-wrap gap-2 mb-3 min-h-[32px]"></div>
+                                    <div class="flex gap-2">
+                                        <input id="input_palabra" type="text" class="form-control" style="background:#f8f9fa;" placeholder="Agregar palabra clave y presionar Enter">
+                                        <button type="button" id="btn_agregar_palabra" class="btn" style="border:1px solid #0d7377;color:#0d7377;background:transparent;white-space:nowrap;">Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECCIÓN 2: Autoría -->
+                        <div class="card p-30">
+                            <h3 class="font-semibold text-lg mb-6 pb-3" style="border-bottom:1px solid var(--border);">Sección 2: Información de Autoría</h3>
+                            <div class="space-y-6">
+                                <!-- Autor principal — campos editables -->
+                                <div class="p-4 border rounded-lg" style="background:#f8f9fa;border-color:var(--border);">
+                                    <h4 class="text-sm font-semibold mb-4">Autor Principal</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm mb-2 font-medium">Nombre Completo</label>
+                                            <!-- CORRECCIÓN: ahora es editable para que el autor pueda corregirlo -->
+                                            <input id="nombre_autor_principal" type="text" class="form-control" placeholder="Su nombre completo">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm mb-2 font-medium">Correo de Correspondencia <span class="text-red-600">*</span></label>
+                                            <!-- CORRECCIÓN: editable -->
+                                            <input id="correo_autor" type="email" class="form-control" placeholder="correo@uleam.edu.ec">
+                                        </div>
+                                        <!-- CORRECCIÓN: campo de Afiliación que faltaba -->
+                                        <div class="md:col-span-2">
+                                            <label class="block text-sm mb-2 font-medium">Afiliación Institucional <span class="text-red-600">*</span></label>
+                                            <input id="afiliacion_autor" type="text" class="form-control" placeholder="Universidad Laica Eloy Alfaro de Manabí">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="contenedor_coautores" class="space-y-4"></div>
+
+                                <button type="button" id="btn_agregar_coautor" class="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium transition-colors" style="border:2px dashed rgba(13,115,119,0.3);color:#0d7377;">
+                                    <span class="material-symbols-outlined">add</span> Añadir Coautor
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- SECCIÓN 3: PDF -->
+                        <div class="card p-30">
+                            <h3 class="font-semibold text-lg mb-6 pb-3" style="border-bottom:1px solid var(--border);">Sección 3: Carga de Manuscrito (PDF)</h3>
+                            <div class="border-2 border-dashed rounded-lg p-8 flex flex-col items-center text-center transition-colors" style="border-color:#0d7377;background:#f8f9fa;">
+                                <span class="material-symbols-outlined text-4xl mb-4" style="color:#0d7377;">upload_file</span>
+                                <p class="font-medium mb-2">Haga clic o arrastre el archivo aquí</p>
+                                <p class="text-sm mb-4" style="color:var(--text-muted);">Solo formato PDF. Máximo 10MB.</p>
+                                <input id="archivo_pdf" type="file" accept="application/pdf" class="block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#0d7377] file:text-white cursor-pointer" style="color:var(--text-muted);">
+                            </div>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="flex items-center justify-between pt-2">
+                            <button type="button" class="btn btn-outline">Guardar Borrador</button>
+                            <button type="submit" class="btn text-white px-8 py-3 flex items-center gap-2" style="background:#8B0000;">
+                                <span class="material-symbols-outlined">send</span> Enviar Manuscrito
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </section>
+
+            <!-- ===== CONFIGURACIÓN ===== -->
+            <section id="configuracion" class="view-section" style="display:none;">
+                <div class="page-header"><h1>Configuración</h1></div>
+                <div class="card p-30"><p style="color:var(--text-muted);">Opciones de sistema (próximamente)...</p></div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/app.js"></script>
+    <script src="js/DatabaseService.js"></script>
+    <script src="js/AutorController.js"></script>
+</body>
+</html>
