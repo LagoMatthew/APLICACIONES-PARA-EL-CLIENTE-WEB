@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0b0c10;
+    color: #c5c6c7;
+    display: flex;
+    justify-content: center;
+    padding: 30px 10px;
+    min-height: 100vh;
+}
+
+.contenedor {
+    background-color: #1f2833;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 0 20px rgba(102, 252, 241, 0.15);
+    border: 1px solid #45a29e;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #66fcf1;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 1.3rem;
+    margin-top: 30px;
+    border-top: 1px solid #45a29e;
+    padding-top: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.fila-inputs {
+    display: flex;
+    gap: 15px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: #0b0c10;
+    border: 1px solid #45a29e;
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #66fcf1;
+    box-shadow: 0 0 10px rgba(102, 252, 241, 0.4);
+}
+
+button {
+    padding: 12px;
+    background: linear-gradient(90deg, #1f2833, #45a29e);
+    color: #66fcf1;
+    border: 1px solid #66fcf1;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #66fcf1;
+    color: #0b0c10;
+    box-shadow: 0 0 15px rgba(102, 252, 241, 0.6);
+}
+
+/* Estilos para la lista de estudiantes */
+ul {
+    list-style: none;
+}
+
+.elemento-estudiante {
+    background-color: #0b0c10;
+    border: 1px solid #45a29e;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.elemento-estudiante h3 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.elemento-estudiante p {
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+.btn-eliminar {
+    background: rgba(255, 0, 0, 0.1);
+    color: #ff4c4c;
+    border: 1px solid #ff4c4c;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+
+.btn-eliminar:hover {
+    background: #ff4c4c;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 76, 76, 0.4);
+}
+
+/* Manejo de errores */
+.oculto {
+    display: none;
+}
+
+#caja-errores {
+    background-color: rgba(255, 76, 76, 0.1);
+    color: #ff4c4c;
+    border: 1px solid #ff4c4c;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 0.95rem;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Estudiantil</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        <h1>Registro Estudiantil</h1>
+        <div id="caja-errores" class="oculto"></div>
+        
+        <form id="formulario-estudiantes">
+    <input type="text" id="cedula-estudiante" placeholder="Cédula (10 dígitos)" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+    
+    <div class="fila-inputs">
+        <input type="text" id="nombres-estudiante" placeholder="Nombres" oninput="this.value = this.value.replace(/[^a-zA-ZÁ-ÿ\s]/g, '')" required>
+        <input type="text" id="apellidos-estudiante" placeholder="Apellidos" oninput="this.value = this.value.replace(/[^a-zA-ZÁ-ÿ\s]/g, '')" required>
+    </div>
+
+    <input type="text" id="direccion-estudiante" placeholder="Dirección de domicilio" required>
+    
+    <div class="fila-inputs">
+        <input type="text" id="telefono-estudiante" placeholder="Teléfono" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+        <input type="email" id="correo-estudiante" placeholder="Correo Electrónico" required>
+    </div>
+
+    <div class="fila-inputs">
+        <select id="facultad-estudiante" required>
+            <option value="">Seleccione Facultad...</option>
+            <option value="Ciencias Informáticas">Ciencias Informáticas</option>
+            <option value="Ingeniería">Ingeniería</option>
+            <option value="Administración">Administración</option>
+        </select>
+        <input type="number" id="nivel-estudiante" min="1" max="10" placeholder="Nivel (Ej: 5)" required>
+        <input type="text" id="paralelo-estudiante" maxlength="1" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" placeholder="Paralelo (Ej: A)" required>
+    </div>
+
+    <button type="submit">Registrar Estudiante</button>
+</form>
+
+        <h2>Estudiantes Registrados</h2>
+        <ul id="lista-estudiantes"></ul>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
